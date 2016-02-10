@@ -1,7 +1,13 @@
-num = 5
-cap = 3
-refill = 2
-fun = [4,1,-2,3,4]
+lines = [line.rstrip('\n') for line in open(input("enter filename: "))]
+
+num = int((lines[0].split('('))[1].split(')')[0])
+cap = int((lines[1].split('('))[1].split(')')[0])
+refill = int((lines[2].split('('))[1].split(')')[0])
+fun = []
+
+for index in range(3, len(lines)):
+    fun.append(int((lines[index].split('('))[1].split(',')[1].split(')')[0]))
+
 len = len(fun)
 tokens = cap
 max_fun = 0
@@ -46,5 +52,4 @@ def total_fun(index, current_fun, tokens):
 
 
 total_fun(0, current_fun, tokens)
-print(max_fun_list)   #TODO, incorrect
-print(max_fun)
+print("total_fun(" + str(max_fun) + ").")
